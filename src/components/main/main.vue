@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<Header/>
-		<div>
+		<div class="main_wrap">
 			<router-view/>
 		</div>
 	</section>
@@ -26,3 +26,8 @@
 		}
 	}
 </script>
+<style lang="scss" rel='stylesheet/scss'>
+  .main_wrap{
+  	margin-top:1.2rem;
+  }
+</style>

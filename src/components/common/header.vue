@@ -24,9 +24,9 @@
 <style lang="scss" scoped="scoped" rel="stylesheet/scss">
      .headerNative {
 	 		width:100%;
-	 		height:2rem;
-	 		background:#fff;
+	 		height:1.2rem;
 	 		position:fixed;
+	 		background:#fff;
 	 		left:0;
 	 		top:0;
 	 		z-index:99;

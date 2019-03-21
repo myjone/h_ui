@@ -62,11 +62,11 @@ module.exports = {
   // devServer: {
   //   proxy: 'localhost:3000'
   // }
-//css: {
-//  loaderOptions: {
-//    sass: {
-//      data:  '@import "@/css/root.scss";'
-//    }
-//  }
-//}
+css: {
+    loaderOptions: {
+      sass: {
+        data:  '@import "@/css/root.scss";'
+      }
+    }
+}
 }
