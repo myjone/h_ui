@@ -26,7 +26,7 @@
 	 		width:100%;
 	 		height:1.2rem;
 	 		position:fixed;
-	 		background:#fff;
+	 		background:blue;
 	 		left:0;
 	 		top:0;
 	 		z-index:99;

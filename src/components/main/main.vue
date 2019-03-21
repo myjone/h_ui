@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section class="main_APP">
 		<Header/>
 		<div class="main_wrap">
 			<router-view/>
@@ -27,7 +27,8 @@
 	}
 </script>
 <style lang="scss" rel='stylesheet/scss'>
-  .main_wrap{
-  	margin-top:1.2rem;
-  }
+	.main_APP {
+		width: 100%;
+		padding-top: 1.2rem;
+	}
 </style>
