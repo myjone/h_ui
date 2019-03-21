@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>h_ui</title>
+  	<title>h_ui</title>
+    <meta name="renderer" content="webkit" />
+		<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<meta name="format-detection" content="telephone=no" />
   </head>
   <body>
     <noscript>
@@ -15,3 +18,22 @@
     <!-- built files will be auto injected -->
   </body>
 </html>
+<script>
+	fnResize();
+	window.onresize = function() {
+		fnResize();
+	}
+
+	function fnResize() {
+		var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+		if(deviceWidth >= 750) {
+			deviceWidth = 750;
+		}
+		if(deviceWidth <= 320) {
+			deviceWidth = 320;
+		}
+		document.documentElement.style.fontSize = (deviceWidth / 7.5) + 'px';
+	}
+	
+	//100px === 1rem
+</script>
