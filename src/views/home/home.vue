@@ -3,9 +3,22 @@
 		
 	</section>
 </template>
-
 <script>
-</script>
+	export default {
+		name: 'Home',
+		data() {
+			return {
 
-<style>
+			}
+		},
+		methods: {
+
+		},
+		mounted() {
+
+		}
+	}
+</script>
+<style lang="scss" rel='stylesheet/scss'>
+
 </style>

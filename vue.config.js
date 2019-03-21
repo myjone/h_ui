@@ -30,7 +30,7 @@ module.exports = {
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
   // 如果你不需要使用eslint，把lintOnSave设为false即可
   devServer: {
-  	 disableHostCheck: true,
+  	disableHostCheck: true,
 		historyApiFallback: true,
 		hot: true,
 		inline: true,
@@ -65,7 +65,7 @@ module.exports = {
 css: {
     loaderOptions: {
       sass: {
-        data:  '@import "@/css/root.scss";'
+        data:  '@import "@/css/default.scss";'
       }
     }
 }
