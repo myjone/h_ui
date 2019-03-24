@@ -35,6 +35,7 @@
 	.main_APP {
 		width: 100%;
 		padding-top: 1.2rem;
+		padding-bottom:1.2rem;
 	}
 	.transitionRouter-enter-active,
 	.transitionRouter-leave-active {

@@ -1,14 +1,9 @@
 import axios from 'axios';
 import qs from 'qs';
-import Cookies from 'js-cookie';
-import baseURL from '_conf/url'
+//import Cookies from 'js-cookie';
 export const serverUrl = " "
+const baseURL = ''
 export const axiosData = (type, url, data, _callback, that) => {
-	that.$toast.loading({
-		forbidClick: true,
-		loadingType: 'spinner',
-		duration: 0
-	});
 	axios.defaults.baseURL = serverUrl;
 	let sign = localStorage.getItem("sign");
 	let sid = localStorage.getItem("sid");
@@ -37,12 +32,7 @@ export const axiosData = (type, url, data, _callback, that) => {
 			that.$toast.clear();
 			if(res.data.code == 0) {
 				_callback(res.data.data)
-			} else if(res.data.code == 99999) {
-				localStorage.removeItem('user');
-				that.$confirm('会话过期，请重新登录！', '提示', {
-					type: 'warning'
-				})
-			} else if(res.data.code == 20004) {
+			}else if(res.data.code == 20004) {
 				_callback(res.data.data)
 			}else {
 				that.$toast(res.data.msg)
@@ -126,8 +116,6 @@ export const axiosData = (type, url, data, _callback, that) => {
 				if(that.savePassLoading !== undefined) {
 					that.savePassLoading = false;
 				}
-				that.$toast.clear();
-				that.$toast(err.message);
 			}
 		}
 	)

@@ -41,7 +41,7 @@ module.exports = {
 		proxy: {
 			// 匹配代理的url
 			'/api': {
-					target:'http://loan.51soudai.com:8802/',
+					target:'http://localhost:3000/',
 				// 路径重写
 				pathRewrite: {
 					'^/api': '/'

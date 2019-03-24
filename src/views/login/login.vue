@@ -18,12 +18,12 @@
 			<div class="box">
 				<div class="form_group">
 					<div class="input_item">
-						<input type="text" placeholder="手机号/用户名/邮箱" class="input" />
+						<input type="text" placeholder="手机号/用户名/邮箱" class="input"  v-model='user.userName'/>
 					</div>
 				</div>
 				<div class="form_group">
 					<div class="input_item">
-						<input type="password" placeholder="密码" class="input" />
+						<input type="password" placeholder="密码" class="input"  v-model='user.passWord'/>
 					</div>
 				</div>
 				<div class="form_group">
@@ -44,10 +44,15 @@
 </template>
 
 <script>
+	
+	import { axiosData } from '@/api/api'
 	export default {
 		data() {
 			return {
-
+               user:{
+               	userName:"",
+               	passWord:"",
+               }
 			}
 		},
 		methods: {
@@ -55,9 +60,14 @@
 					this.$router.go(-1);
 				},
 				toHome(){
-					this.$router.push({
-						name:'home'
-					})
+					console.log(this.user)
+					let url = '/api/user/login';
+					let param  = {};
+					param = Object.assign({},param,this.user);
+					let _callback =(res)=>{
+						console.log(res)
+					}
+					axiosData('post',url,param,_callback,this)
 				}
 		},
 		mounted() {
