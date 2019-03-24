@@ -25,20 +25,19 @@ router.post('/register',async(ctx)=>{
 
 router.post('/login',async(ctx)=>{
 	 let loginUser = ctx.request.body;
-	 console.log(loginUser)
 	 let userName = loginUser.userName;
 	 let passWord = loginUser.passWord;
 	 //映入user中的model
 	 const User = mongoose.model('Users');
 	 await User.findOne({userName:userName}).exec().then(async(result)=>{
-	 	console.log(result)
 	 	if(result){
 	 		let newUser = new User();
 	 		await newUser.comparaPassword(passWord,result.passWord)
 	 		.then((isMatch)=>{
 	 			ctx.body ={
 	 				code:200,
-	 				message:isMatch
+	 				message:isMatch,
+	 				data:result,
 	 			}
 	 		}).catch(error =>{
 	 			ctx.body ={

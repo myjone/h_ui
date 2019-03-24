@@ -82,5 +82,19 @@ export default [{
 			component: () =>
 				import('@/views/user/author.vue')
 		}]
-	},
+	},{
+		path: '/article',
+		name: 'article',
+		redirect :'/article',
+		component: parentView,
+		children: [{
+			path: 'add',
+			name: 'add',
+			meta: { 
+					title: '编写文章'
+				},
+			component: () =>
+				import('@/views/article/edit.vue')
+		}]
+	}
 ]

@@ -9,11 +9,12 @@ let router = new Router();
 app.use(bodyParser())
 app.use(cors())
 let user = require('./appApi/user.js')
+let article = require('./appApi/articles.js')
 //装在所有子路由
 app.use(router.routes());
 app.use(router.allowedMethods)
 router.use('/user',user.routes())
-
+router.use('/article',article.routes())
 ;(async ()=>{
 	await connect();
 	initSchema();

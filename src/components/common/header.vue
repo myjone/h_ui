@@ -4,8 +4,8 @@
 				<div class="logo">
 					
 				</div>
-				<div class="menu_wap">
-				
+				<div class="menu_wap" @click="toWrite">
+				     	写文章
 				</div>
 		</div>
 	</section>
@@ -19,7 +19,11 @@
 			}
 		},
 		methods: {
-
+			toWrite(){
+				this.$router.push({
+					name:"add",
+				})
+			}
 		},
 		mounted() {
 
@@ -51,6 +55,10 @@
 	 			margin-right:.3rem;
 	 			margin-top:.3rem;
 	 			border:1px solid rgba(235,235,235,.5);
+	 			color:#fff;
+	 			font-size:0.24rem;
+	 			line-height:0.58rem;
+	 			text-align:center;
 	 		}
 	 	}
 </style>

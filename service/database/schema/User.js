@@ -26,7 +26,6 @@ userSchema.methods = {
 	comparaPassword:(_passWord,passWord)=>{
 		return new Promise((resolve,reject)=>{
 			bcrypt.compare(_passWord,passWord,(err,isMatch)=>{
-				console.log(err)
 				if(!err) resolve(isMatch)
 				else reject(err)
 			})
