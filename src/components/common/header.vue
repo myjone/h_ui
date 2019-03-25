@@ -51,7 +51,11 @@
 	 			width:2rem;
 	 			height:0.6rem;
 	 			border-radius:0.3rem;
-	 			background:rgba(0,0,0,0.3);
+	 			background-color:rgba(0,0,0,0.3);
+	 			background-image: url(../../assets/img/common/write.png);
+	 			background-size:0.5rem;
+	 			background-position:1.25rem center;
+	 			background-repeat:no-repeat;
 	 			margin-right:.3rem;
 	 			margin-top:.3rem;
 	 			border:1px solid rgba(235,235,235,.5);
@@ -59,6 +63,7 @@
 	 			font-size:0.24rem;
 	 			line-height:0.58rem;
 	 			text-align:center;
+	 			padding-right:0.3rem;
 	 		}
 	 	}
 </style>

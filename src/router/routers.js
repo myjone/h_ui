@@ -8,6 +8,14 @@ export default [{
 			},
 		component: () =>
 			import('@/views/login/login.vue')
+	},{
+		path: '/register',
+		name: 'register',
+		meta: { 
+			title: '注册'
+			},
+		component: () =>
+			import('@/views/register/register.vue')
 	},
 	{
 		path: '/',

@@ -1,14 +1,6 @@
 <template>
 	<section>
-		<div class="banner" hidden="hidden">
-			<ul class="banner_ul">
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-				<li></li>
-			</ul>
-		</div>
+		
 		<ul class="list">
 			<li>
 				<div class="bar">

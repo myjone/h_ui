@@ -28,12 +28,11 @@
 				</div>
 				<div class="form_group">
 					<div class="input_item">
-						<div class="button" @click="toHome">登 &nbsp;录</div>
+						<div class="button" @click="toHome">注 &nbsp;册</div>
 					</div>
 				</div>
 				<div class="bar">
-					<router-link :to="{name:'register'}">注册</router-link>
-					<a href="">忘记密码?</a>
+					<router-link :to='{name:"login"}'>已有账号</router-link>
 				</div>
 			</div>
 		</div>
@@ -45,8 +44,7 @@
 
 <script>
 	
-	import { axiosData } from '@/api/api';
-	import { mapActions } from 'vuex';
+	import { axiosData } from '@/api/api'
 	export default {
 		data() {
 			return {
@@ -57,22 +55,16 @@
 			}
 		},
 		methods: {
-			...mapActions(['handleLogin']),
-	
 				goBack(){
 					this.$router.go(-1);
 				},
 				toHome(){
-					let url = '/api/user/login';
+					console.log(this.user)
+					let url = '/api/user/register';
 					let param  = {};
 					param = Object.assign({},param,this.user);
 					let _callback =(res)=>{
-						 let userName = res.userName;
-						 let userId = res._id;
-						 this.handleLogin({userName,userId});
-						 this.$router.push({
-						 	name:'home'
-						 })
+						console.log(res)
 					}
 					axiosData('post',url,param,_callback,this)
 				}
@@ -106,11 +98,7 @@
 				position: absolute;
 				width: 1.4rem;
 				height: 1.4rem;
-				background-image:url(../../assets/img/common/login.png);
-				background-position:center center;
-				background-repeat:no-repeat;
-				background-size:contain;
-				background-color:rgba(0,0,0,0.3);
+				background-color: #FFFFFF;
 				left: 50%;
 				transform: translateX(-50%);
 				top: 1.2rem;
@@ -218,9 +206,6 @@
 				font-size:0.24rem;
 				align-items:center;
 				a:nth-child(1){
-					color:$Disabledcolor;
-				}
-				a:nth-child(2){
 					color:$Maincolor;
 				}
 			}

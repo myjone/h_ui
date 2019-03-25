@@ -4,6 +4,11 @@ import qs from 'qs';
 export const serverUrl = " "
 const baseURL = ''
 export const axiosData = (type, url, data, _callback, that) => {
+	that.$toast.loading({
+		forbidClick: true,
+		loadingType: 'spinner',
+		duration: 0
+	});
 	axios.defaults.baseURL = serverUrl;
 	let sign = localStorage.getItem("sign");
 	let sid = localStorage.getItem("sid");
@@ -26,16 +31,15 @@ export const axiosData = (type, url, data, _callback, that) => {
 		},
 		responseType: ''
 	}
-
 	axios(config).then(
 		function(res) {
 			that.$toast.clear();
-			if(res.data.code == 0) {
+			if(res.data.code == 200) {
 				_callback(res.data.data)
 			}else if(res.data.code == 20004) {
 				_callback(res.data.data)
 			}else {
-				that.$toast(res.data.msg)
+				that.$toast(res.data.message.errmsg)
 			}
 			that.loading = false;
 			that.listLoading = false;
