@@ -61,4 +61,10 @@ router.post('/list', async(ctx) => {
 	}
 })
 
+
+router.post('/detail',async(ctx)=>{
+	const Article = mongoose.model('Articles');	
+	console.log(ctx.request.query)
+})
+
 module.exports = router;
