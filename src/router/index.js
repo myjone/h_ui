@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routers'
+import store from '@/store'
 Vue.use(Router)
 let title = document.title;
 const router = new Router({
@@ -8,11 +9,21 @@ const router = new Router({
 	mode: 'history'
 })
 
+//获取token ----此处用userId--- 代替
+let token = '';
 router.beforeEach((to, from, next) => {
+	token = store.getters.userId
+	if((!token || token == null) && to.name == 'add'){
+		next({
+			name:'login'
+		})
+	}
 	if(to.meta && to.meta.title){
 		title = to.meta.title;
 	}	
-	next();
+	
+	next()
+	
 })
 
 router.afterEach(to => {

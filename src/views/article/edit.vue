@@ -6,7 +6,6 @@
 				</div>
 				{{msg}}
 			</div>
-
 			<div class="content_title">
 				<textarea style="outline:none;" placeholder="请输入您的标题" :maxlength="40" v-model='articleModel.articleTitle'></textarea>
 			</div>
@@ -38,9 +37,10 @@
 				}
 			}
 		},
-		methods: {
+		computed:{
 			...mapGetters(['userId']),
-
+		},
+		methods: {
 			back() {
 				this.$router.go(-1)
 			},
@@ -80,11 +80,11 @@
 			}
 		},
 		mounted() {
-
+			console.log(this.userId)
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.edit_wrap {
 		width: 100%;
 		height: 100vh;

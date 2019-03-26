@@ -91,7 +91,7 @@
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.banner {
 		width: 100%;
 		background: #FFFFFF;

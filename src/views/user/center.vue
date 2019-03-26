@@ -21,7 +21,7 @@
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.user_wrap{
 		width:100%;
 		height:4.86rem;

@@ -18,7 +18,6 @@ export const axiosData = (type, url, data, _callback, that) => {
 	axios.defaults.headers.common['sign'] = sign;
 	axios.defaults.headers.common['sid'] = sid;
 	axios.defaults.headers.common['channel'] = 'H5';
-	//	axios.defaults.headers.common['uid'] = userId;
 	let config = {
 		method: type,
 		url: url,
@@ -36,9 +35,9 @@ export const axiosData = (type, url, data, _callback, that) => {
 			that.$toast.clear();
 			if(res.data.code == 200) {
 				_callback(res.data.data)
-			}else if(res.data.code == 20004) {
+			} else if(res.data.code == 20004) {
 				_callback(res.data.data)
-			}else {
+			} else {
 				that.$toast(res.data.message.errmsg)
 			}
 			that.loading = false;
@@ -48,6 +47,7 @@ export const axiosData = (type, url, data, _callback, that) => {
 		}
 	).catch(
 		function(err) {
+			that.$toast.clear();
 			if(err && err.response) {
 				switch(err.response.status) {
 					case 400:
@@ -123,5 +123,4 @@ export const axiosData = (type, url, data, _callback, that) => {
 			}
 		}
 	)
-
 };

@@ -58,7 +58,7 @@
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.user_wrap {
 		position: relative;
 		top: -0.1rem;

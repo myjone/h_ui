@@ -3,7 +3,9 @@
 		<Header/>
 		<div class="main_wrap">
 		<transition name="transitionRouter" mode="out-in">
-			<router-view/>
+			<keep-alive>
+			  <router-view/>
+			</keep-alive>
 		</transition>
 		</div>
 		<Footer/>

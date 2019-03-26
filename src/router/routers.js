@@ -103,6 +103,14 @@ export default [{
 				},
 			component: () =>
 				import('@/views/article/edit.vue')
+		},{
+			path: 'detail/:id',
+			name: 'detail',
+			meta: { 
+					title: '文章详情 '
+				},
+			component: () =>
+				import('@/views/article/detail.vue')
 		}]
 	}
 ]

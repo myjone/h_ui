@@ -3,13 +3,13 @@
 		<van-pull-refresh v-model="isLoading" @refresh="onRefresh">
 		<van-list v-model="loading" :finished="!finished" finished-text="没有更多了" @load="onLoad">
 			<ul class="list">
-				<li v-for="(item,index) in list" :key='index'>
-					<div class="bar">
-						<div class="img">
-
+				<li v-for="(item,index) in list" :key='index' @click="toDetail(item._id)" v-if='item.userId'>
+					<div class="bar" v-show="item.userId">
+						<div class="img" v-lazy:background-image="item.userId.userImage">
+							
 						</div>
 						<div class="user_name">
-							这是一头猪的时代啊！！！！！
+							{{item.userId.userName}}
 						</div>
 						<div class="sign">
 							web前端
@@ -87,6 +87,7 @@
 				}
 				axiosData('post',url,param,_callback,this)
 			},
+			//上拉加载
 			onLoad(){
 				if(this.finished){
 					this.page.pageNum++;
@@ -95,7 +96,6 @@
 				}else{
 					return;
 				}
-				
 			},
 			//下拉刷新
 			onRefresh(){
@@ -103,14 +103,25 @@
 				this.page.pageNum = 1;
 				this.sign = 'onRefresh';
 				this.getList();
+			},
+			
+			//跳转到文章详情页面
+			toDetail(id){
+				this.$router.push({
+					name:'detail',
+					params:{
+						id:id
+					}
+				})
 			}
+			
 		},
 		mounted() {
 				this.getList();
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.banner {
 		width: 100%;
 		background: #FFFFFF;
@@ -131,7 +142,6 @@
 			}
 		}
 	}
-	
 	.list {
 		width: 100vw;
 		padding: 0.2rem;
@@ -155,6 +165,7 @@
 					background-color: rgb(245, 245, 245);
 					border-radius: 100%;
 					float: left;
+					background-size:contain;
 				}
 				.user_name {
 					width: 3rem;

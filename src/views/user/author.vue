@@ -25,7 +25,7 @@
 		}
 	}
 </script>
-<style lang="scss" rel='stylesheet/scss'>
+<style lang="scss" rel='stylesheet/scss' scoped="scoped">
 		.author_wrap{
 			width:100%;
 			min-height:100vh;
