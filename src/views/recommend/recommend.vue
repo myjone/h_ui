@@ -4,6 +4,13 @@
 	    	<input type="text"  placeholder="请输入标签" v-model='labelName'/>
 	         <div @click="label">添加</div>
 	    </div>
+	    <div class="input">
+	    	<input type="text"  placeholder="请输入标签" v-model='labelListName'/>
+	    	<input type="text"  placeholder="请输入标签" v-model='labelListContent'/>
+	         <div @click="label1">添加</div>
+	         
+	         <div @click="getList">列表</div>
+	    </div>
 		<div class="wrap">
 			<div class="title">
 				vue 学习指南
@@ -26,6 +33,8 @@
 		data() {
 			return {
 				labelName:'',
+				labelListName:'',
+				labelListContent:'',
 			}
 		},
 		computed:{
@@ -49,6 +58,28 @@
               	let param = {};
               	param.labelName = this.labelName;
               	console.log(this.labelName)
+              	let _callback =(res)=>{
+              		console.log(res);
+              	}
+              	 axiosData('post',url,param,_callback,this)
+              },
+               label1(){
+              	let url = '/api/labelList/insertLabelList';
+              	let param = {};
+              	param.labelListName = this.labelListName;
+              	param.labelListContent = this.labelListContent;
+              	param.labelId = '5c9b2b5b3dcd9a1d1c4d280c'
+              	console.log(this.labelName)
+              	let _callback =(res)=>{
+              		console.log(res);
+              	}
+              	 axiosData('post',url,param,_callback,this)
+              },
+              
+              //获取列表
+              getList(){	
+              	let url = '/api/label/list';
+              	let param = {};
               	let _callback =(res)=>{
               		console.log(res);
               	}

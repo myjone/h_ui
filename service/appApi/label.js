@@ -23,4 +23,19 @@ router.post('/insertLabel', async(ctx) => {
 	})
 })
 
+
+router.post('/list',async(ctx)=>{
+	const Article = mongoose.model('Labels');
+	let total = '';
+	try {
+		let result = await Article.find({}).populate('labelId').exec();
+		console.log(result)
+	} catch(err) {
+		ctx.body = {
+			code: 500,
+			message: err
+		}
+	}
+})
+
 module.exports = router;
