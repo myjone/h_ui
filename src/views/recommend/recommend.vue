@@ -1,5 +1,9 @@
 <template>
 	<section class="my_section">
+	    <div class="input">
+	    	<input type="text"  placeholder="请输入标签" v-model='labelName'/>
+	         <div @click="label">添加</div>
+	    </div>
 		<div class="wrap">
 			<div class="title">
 				vue 学习指南
@@ -9,19 +13,47 @@
 				<li></li>
 				<li></li>
 			</ul>
+			
+			<button @click="getUserArticleList">获取用户下面的所有文章</button>
 		</div>
 	</section>
 </template>
 <script>
+	import {axiosData} from '@/api/api';
+	import {mapGetters} from 'vuex';
 	export default {
 		name: 'recommend',
 		data() {
 			return {
-
+				labelName:'',
 			}
 		},
+		computed:{
+			...mapGetters(['userId'])
+		},
 		methods: {
-
+              getUserArticleList(){
+              	let  url = '/api/article/fingByUser';
+              	let param = {};
+                param.userId = this.userId;
+                console.log(param.userId)
+                let _callback =(res)=>{
+                	console.log(res)
+                }
+                
+                axiosData('post',url,param,_callback,this)
+              },
+              //添加分类
+              label(){
+              	let url = '/api/label/insertLabel';
+              	let param = {};
+              	param.labelName = this.labelName;
+              	console.log(this.labelName)
+              	let _callback =(res)=>{
+              		console.log(res);
+              	}
+              	 axiosData('post',url,param,_callback,this)
+              }
 		},
 		mounted() {
 
@@ -31,6 +63,26 @@
 <style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.my_section{
 		width:100%;
+		.input{
+			width:100%;
+			input{
+				display:block;
+				width:100%;
+				height:0.6rem;
+				border:1px solid #E2E2E2;
+				font-size:0.26rem;
+				text-align:left;
+			}
+			div{
+				width:2rem;
+				height:0.6rem;
+				font-size:0.24rem;
+				line-height:0.6rem;
+				text-align:center;
+				background:blue;
+				margin:0.2rem auto;
+			}
+		}
 		.wrap{
 			width:6.9rem;
 			margin:0 auto;

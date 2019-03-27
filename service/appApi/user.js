@@ -52,7 +52,6 @@ router.post('/login',async(ctx)=>{
 	 		}
 	 	}
 	 }).catch(error=>{
-	 	console.log(error)
 	 	ctx.body={
 	 		code:500,
 	 		message:error,

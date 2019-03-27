@@ -58,7 +58,8 @@ router.post('/list', async(ctx) => {
 		}
 	}
 })
-router.post('/detail', async(ctx) => {
+
+router.post('/detail', async(ctx) =>{
 	const Article = mongoose.model('Articles');
 	let _id = ctx.request.body._id
 	try {
@@ -77,4 +78,29 @@ router.post('/detail', async(ctx) => {
 		}
 	}
 })
+
+//查询用户的所有文章
+router.post('/fingByUser', async(ctx) => {
+	let loginUser = ctx.request.body;
+	const Article = mongoose.model('Articles');
+	const User = mongoose.model('Users');
+	await User.findOne({
+		"_id": loginUser.userId
+	}).exec().then(async(result) => {
+		await Article.find({"userId":result._id}).populate('userId').exec().then((data)=>{
+			ctx.body = {
+				code:200,
+				message:'请求成功',
+				data:data,
+			}
+		});
+	}).catch((error)=>{
+		ctx.body = {
+			code:500,
+			message:error
+		}
+	})
+})
+
+
 module.exports = router;
