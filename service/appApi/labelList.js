@@ -22,5 +22,21 @@ router.post('/insertLabelList', async(ctx) => {
 		}
 	})
 })
+router.post('/labellist', async(ctx) => {
+	let  labelList = mongoose.model('LabelLists');
+     try{
+     	
+     	let result = await labelList.find({}).populate('labelId').exec();
+     	
+     	console.log(result  +'-----------------')
+     	
+     	
+     }catch(error){
+     	ctx.body = {
+     		code:500,
+     		message:error
+     	}
+     }
+})
 
 module.exports = router;

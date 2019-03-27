@@ -1,5 +1,29 @@
 <template>
 	<section class="my_section">
+		<div class="list_bar">
+			<div class="ul_bar">
+				<li>穿越</li>
+				<li>火线</li>
+				<li>林俊杰</li>
+				<li>张拿来</li>
+				<li>穿越</li>
+				<li>火线</li>
+				<li>林俊杰</li>
+				<li>张拿来</li>
+				<li>穿越</li>
+				<li>火线</li>
+				<li>林俊杰</li>
+				<li>张拿来</li>
+				<li>穿越</li>
+				<li>火线</li>
+				<li>林俊杰</li>
+				<li>张拿来</li>
+			</div>
+			<div class="shoddow_hr"></div>
+			<div class="icon_add">
+				
+			</div>
+		</div>
 	    <div class="input">
 	    	<input type="text"  placeholder="请输入标签" v-model='labelName'/>
 	         <div @click="label">添加</div>
@@ -10,6 +34,7 @@
 	         <div @click="label1">添加</div>
 	         
 	         <div @click="getList">列表</div>
+	         <div @click="getlist1">列表</div>
 	    </div>
 		<div class="wrap">
 			<div class="title">
@@ -68,7 +93,7 @@
               	let param = {};
               	param.labelListName = this.labelListName;
               	param.labelListContent = this.labelListContent;
-              	param.labelId = '5c9b2b5b3dcd9a1d1c4d280c'
+              	param.labelId = '5c9b67d05e10ce32384bf06d'
               	console.log(this.labelName)
               	let _callback =(res)=>{
               		console.log(res);
@@ -84,6 +109,15 @@
               		console.log(res);
               	}
               	 axiosData('post',url,param,_callback,this)
+              },
+              //获取文章列表
+              getlist1(){
+              	let url = '/api/labelList/labellist';
+              	let param = {};
+              	let _callback =(res)=>{
+              		console.log(res);
+              	}
+              	 axiosData('post',url,param,_callback,this)
               }
 		},
 		mounted() {
@@ -94,6 +128,58 @@
 <style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.my_section{
 		width:100%;
+		.list_bar{
+			position:relative;
+			width:100%;
+			height:0.8rem;
+			background:#FFFFFF;
+			box-shadow:0 2px 5px rgba(0,0,0,.09);
+			margin:0.1rem 0 0.2rem 0;
+			font-size:0;
+			padding-right:0.8rem;
+			box-sizing:border-box;
+			overflow:hidden;
+			.icon_add{
+				position:absolute;
+				top:0;
+				right:0;
+				background:url(../../assets/img/common/add.png) center center no-repeat;
+				background-size:0.5rem;
+				width:0.8rem;
+				height:0.8rem;
+			}
+			.shoddow_hr{
+				position:absolute;
+				height:0.4rem;
+				width:1px;
+				box-shadow:-2px 0 8px rgba(0,0,0,0.8);
+				top:0.2rem;
+				transform:scaleX(0.1);
+				right:0.8rem;
+				background:rgba(0,0,0,0);
+			}
+			.ul_bar{
+				width:100%;
+				height:0.8rem;
+				box-sizing:border-box;
+				padding-left:0.2rem;
+				padding-top:0.1rem;
+				overflow-x: auto;
+   				white-space: nowrap;
+				li{
+					display:inline-block;
+					height:0.6rem;
+					background:blue;
+					font-size:0.24rem;
+					color:#FFFFFF;
+					text-align:center;
+					margin-right:0.2rem;
+					border-radius:2px;
+					line-height:0.6rem;
+					padding:0 0.3rem;
+				}
+			}
+		}
 		.input{
 			width:100%;
 			input{

@@ -23,14 +23,23 @@ router.post('/insertLabel', async(ctx) => {
 	})
 })
 
-
 router.post('/list',async(ctx)=>{
-	const Article = mongoose.model('Labels');
+	const Lables = mongoose.model('Labels');
 	let total = '';
 	try {
-		let result = await Article.find({}).populate('labelId').exec();
-		console.log(result)
+		let result = await Lables.aggregate([{$lookup:{
+			from:'labellists',
+			localField: "_id",
+       	    foreignField: "labelId",
+            as: "articleList"}}]).exec();
+		
+		ctx.body = {
+			code:200,
+			message:'请求成功',
+			data:result,
+		}
 	} catch(err) {
+		console.log(err +"————————————")
 		ctx.body = {
 			code: 500,
 			message: err

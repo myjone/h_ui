@@ -37,7 +37,7 @@ router.post('/list', async(ctx) => {
 		let page = Number(reqParam.pageNum); //当前第几页
 		let size = 10 //每页显示数量
 		let start = (page - 1) * size
-		let result = await Article.find({}).populate('userId').skip(start).limit(size).exec();
+		let result = await Article.find({}).sort({_id: -1}).populate('userId').skip(start).limit(size).exec();
 		let hasMore = total - (page - 1) * size > size ? true : false;
 		ctx.body = {
 			code: 200,

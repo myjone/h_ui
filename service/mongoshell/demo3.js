@@ -52,4 +52,5 @@ var db = connect('company');
 //db.work.update({name:'xiaowang'},{$set:{'interest.2':'吃屎啦啦啦'}})
 
 //db.runCommand();
+
 print('修改成功啦')
