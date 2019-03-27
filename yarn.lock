@@ -9469,8 +9469,8 @@ validate-npm-package-license@^3.0.1:
 
 vant@^1.6.11:
   version "1.6.11"
-  resolved "http://registry.npm.taobao.org/vant/download/vant-1.6.11.tgz#a904a2f5dec0cfd02d78b6ba46c3ed7372e15974"
-  integrity sha1-qQSi9d7Az9AteLa6RsPtc3LhWXQ=
+  resolved "https://registry.yarnpkg.com/vant/-/vant-1.6.11.tgz#a904a2f5dec0cfd02d78b6ba46c3ed7372e15974"
+  integrity sha512-Ie/qQZbd61C7jEqb50HokK/tJMesFGOEIWxt6w+5QKDct47+P+eP+o1XzsXoTI+cECtIrR7N4ZKRO1YvWlQCKg==
   dependencies:
     "@babel/runtime" "^7.4.2"
     "@vant/icons" "1.1.4"
