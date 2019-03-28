@@ -1,7 +1,7 @@
 <template>
 	<section>
 		<div class="user_wrap">
-			<div class="user_box">
+			<div class="user_box" @click="center">
 				<div class="user_img">
 
 				</div>
@@ -50,6 +50,12 @@
 			toRoute(name){
 				this.$router.push({
 					name:name,
+				})
+			},
+			
+			center(){
+				this.$router.push({
+					name:'center',
 				})
 			}
 		},

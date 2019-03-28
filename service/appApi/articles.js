@@ -3,6 +3,7 @@ const app = new Koa();
 const Router = require('koa-router');
 let router = new Router();
 const mongoose = require('mongoose');
+const qnconfig = require('../config/config.js')
 router.post('/insertArticle', async(ctx) => {
 	let Article = new mongoose.model('Articles');
 	let newArtcle = new Article(ctx.request.body);
@@ -100,6 +101,14 @@ router.post('/fingByUser', async(ctx) => {
 			message:error
 		}
 	})
+})
+
+router.post('/token', (ctx) => {
+      ctx.body = {
+      	 code:200,
+      	 message:'请求成功',
+      	 data:qnconfig.uploadToken,
+      }
 })
 
 

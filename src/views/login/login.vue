@@ -57,7 +57,7 @@
 			}
 		},
 		methods: {
-			...mapActions(['handleLogin']),
+			...mapActions(['handleLogin','userSet']),
 	
 				goBack(){
 					this.$router.go(-1);
@@ -69,6 +69,7 @@
 					let _callback =(res)=>{
 						 let userName = res.userName;
 						 let userId = res._id;
+						 this.userSet(res);
 						 this.handleLogin({userName,userId});
 						 this.$router.push({
 						 	name:'home'

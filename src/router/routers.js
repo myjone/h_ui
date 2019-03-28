@@ -85,10 +85,18 @@ export default [{
 			path: 'author',
 			name: 'author',
 			meta: { 
-					title: '站在风口的猪啊！！！！'
+					title: '个人中心'
 				},
 			component: () =>
 				import('@/views/user/author.vue')
+		},{
+			path: 'edit',
+			name: 'edit',
+			meta: { 
+					title: '资料修改'
+				},
+			component: () =>
+				import('@/views/user/edit.vue')
 		}]
 	},{
 		path: '/article',

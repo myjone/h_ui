@@ -2,22 +2,7 @@
 	<section class="my_section">
 		<div class="list_bar">
 			<div class="ul_bar">
-				<li>穿越</li>
-				<li>火线</li>
-				<li>林俊杰</li>
-				<li>张拿来</li>
-				<li>穿越</li>
-				<li>火线</li>
-				<li>林俊杰</li>
-				<li>张拿来</li>
-				<li>穿越</li>
-				<li>火线</li>
-				<li>林俊杰</li>
-				<li>张拿来</li>
-				<li>穿越</li>
-				<li>火线</li>
-				<li>林俊杰</li>
-				<li>张拿来</li>
+				<li v-for='(item,inde) in labelList'>{{item.labelName}}</li>
 			</div>
 			<div class="shoddow_hr"></div>
 			<div class="icon_add">
@@ -32,7 +17,6 @@
 	    	<input type="text"  placeholder="请输入标签" v-model='labelListName'/>
 	    	<input type="text"  placeholder="请输入标签" v-model='labelListContent'/>
 	         <div @click="label1">添加</div>
-	         
 	         <div @click="getList">列表</div>
 	         <div @click="getlist1">列表</div>
 	    </div>
@@ -48,6 +32,8 @@
 			
 			<button @click="getUserArticleList">获取用户下面的所有文章</button>
 		</div>
+		
+		
 	</section>
 </template>
 <script>
@@ -60,6 +46,7 @@
 				labelName:'',
 				labelListName:'',
 				labelListContent:'',
+				labelList:[],
 			}
 		},
 		computed:{
@@ -74,7 +61,6 @@
                 let _callback =(res)=>{
                 	console.log(res)
                 }
-                
                 axiosData('post',url,param,_callback,this)
               },
               //添加分类
@@ -84,7 +70,7 @@
               	param.labelName = this.labelName;
               	console.log(this.labelName)
               	let _callback =(res)=>{
-              		console.log(res);
+              		
               	}
               	 axiosData('post',url,param,_callback,this)
               },
@@ -100,7 +86,6 @@
               	}
               	 axiosData('post',url,param,_callback,this)
               },
-              
               //获取列表
               getList(){	
               	let url = '/api/label/list';
@@ -115,13 +100,22 @@
               	let url = '/api/labelList/labellist';
               	let param = {};
               	let _callback =(res)=>{
-              		console.log(res);
+              		
               	}
               	 axiosData('post',url,param,_callback,this)
+              },
+              //获取分类列表
+              getLabelList(){
+              	  let url = '/api/label/labelList';
+              	  let param = {};
+              	  let _callback =(res)=>{
+              	  	this.labelList = [...res]
+              	  }
+              	  axiosData('post',url,param,_callback,this)
               }
 		},
 		mounted() {
-
+			this.getLabelList();
 		}
 	}
 </script>
@@ -139,6 +133,7 @@
 			padding-right:0.8rem;
 			box-sizing:border-box;
 			overflow:hidden;
+			-webkit-overflow-scrolling: touch;
 			.icon_add{
 				position:absolute;
 				top:0;
@@ -147,6 +142,10 @@
 				background-size:0.5rem;
 				width:0.8rem;
 				height:0.8rem;
+				transition:0.35s ease-in;
+				&:hover{
+				   transform:scale(1.1);
+				}
 			}
 			.shoddow_hr{
 				position:absolute;
@@ -166,12 +165,13 @@
 				padding-top:0.1rem;
 				overflow-x: auto;
    				white-space: nowrap;
+   				transition:0.36s ease-in-out;
+   				font-size:0;
 				li{
 					display:inline-block;
 					height:0.6rem;
-					background:blue;
 					font-size:0.24rem;
-					color:#FFFFFF;
+					color:#333;
 					text-align:center;
 					margin-right:0.2rem;
 					border-radius:2px;
@@ -236,4 +236,5 @@
 			}
 		}
 	}
+	
 </style>

@@ -51,6 +51,7 @@
 			back() {
 				this.$router.go(-1)
 			},
+			
 			//判断滚动条事件
 			handleScroll() {
 				var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop

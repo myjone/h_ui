@@ -39,7 +39,6 @@ router.post('/list',async(ctx)=>{
 			data:result,
 		}
 	} catch(err) {
-		console.log(err +"————————————")
 		ctx.body = {
 			code: 500,
 			message: err
@@ -47,4 +46,20 @@ router.post('/list',async(ctx)=>{
 	}
 })
 
+router.post('/labelList',async(ctx)=>{
+	const Lables = mongoose.model('Labels');
+	try {
+		let result = await Lables.find({}).exec();
+		ctx.body = {
+			code:200,
+			message:'请求成功',
+			data:result,
+		}
+	} catch(err) {
+		ctx.body = {
+			code: 500,
+			message: err
+		}
+	}
+})
 module.exports = router;
