@@ -10,6 +10,7 @@ router.post('/',async(ctx)=>{
 router.post('/register',async(ctx)=>{
 	 const User = mongoose.model('Users');
 	 let newUser = new User(ctx.request.body);
+	 console.log(newUser)
 	 await newUser.save().then(()=>{
 	 	ctx.body = {
 	 		code:200,
@@ -25,11 +26,11 @@ router.post('/register',async(ctx)=>{
 
 router.post('/login',async(ctx)=>{
 	 let loginUser = ctx.request.body;
-	 let userName = loginUser.userName;
+	 let phone = loginUser.phone;
 	 let passWord = loginUser.passWord;
 	 //映入user中的model
 	 const User = mongoose.model('Users');
-	 await User.findOne({userName:userName}).exec().then(async(result)=>{
+	 await User.findOne({phone:phone}).exec().then(async(result)=>{
 	 	if(result){
 	 		let newUser = new User();
 	 		await newUser.comparaPassword(passWord,result.passWord)
@@ -48,7 +49,7 @@ router.post('/login',async(ctx)=>{
 	 	}else{
 	 		ctx.body={
 	 		code:500,
-	 		message:'用户名不存在',
+	 		message:'该用户不存在',
 	 		}
 	 	}
 	 }).catch(error=>{

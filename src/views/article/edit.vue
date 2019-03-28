@@ -9,6 +9,9 @@
 			<div class="content_title">
 				<textarea style="outline:none;" placeholder="请输入您的标题" :maxlength="40" v-model='articleModel.articleTitle'></textarea>
 			</div>
+			<div class="article_img">
+				<Upload></Upload>
+			</div>
 			<div class="edit_content">
 				<textarea name="" id="" cols="" rows="" style="vertical-align:top;outline:none;" placeholder="请输入您的内容" v-model='articleModel.articleContent'></textarea>
 			</div>
@@ -26,8 +29,12 @@
 <script>
 	import { axiosData } from '@/api/api';
 	import { mapGetters } from 'vuex';
+	import Upload from'@/components/upload/upload.vue';
 	export default {
 		name: 'Home',
+		components:{
+			Upload,
+		},
 		data() {
 			return {
 				msg: '文章书写',
@@ -38,7 +45,7 @@
 			}
 		},
 		computed:{
-			...mapGetters(['userId']),
+			...mapGetters(['userId','src']),
 		},
 		methods: {
 			back() {
@@ -49,6 +56,7 @@
 				let param = {};
 				param = Object.assign({}, param, this.articleModel)
 				param.userId = this.userId;
+				param.articleImg = this.src;
 				let _callback = (res) => {
 					if(res.messsage == 'success') {
 						this.$toast('文章已经保');
@@ -117,6 +125,12 @@
 				top: 0.25rem;
 			}
 		}
+		.article_img{
+			width:100%;
+			height:3rem;
+			margin:0.1rem auto;
+			border-bottom:1px solid #E2E2E2;
+		}
 		.content_title {
 			width: 100%;
 			overflow: hidden;
@@ -136,7 +150,7 @@
 		}
 		.edit_content {
 			width: 100%;
-			height: 70vh;
+			height:50vh;
 			overflow-x: hidden;
 			overflow-y: scroll;
 			background: blue;

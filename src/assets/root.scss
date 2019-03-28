@@ -291,3 +291,11 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
  /* Internet Explorer 10+ */ 
 color: #cccccc; 
 }
+
+input:-webkit-autofill {
+         -webkit-box-shadow: 0 0 0px 1000px white inset;
+       }
+       
+body,html,#app{
+    height:100%;
+}

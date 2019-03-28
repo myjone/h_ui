@@ -8,10 +8,11 @@ const userSchema =  new Schema({
 	UserId :ObjectId,
 	userName :{unique:true,type:String},
 	passWord :String,
-	userImage:{type:String,default:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=391334800,1376169448&fm=200&gp=0.jpg'},
-	userTips:{type:String,default:'这是一头猪的时代'},
+	userImage:{type:String},
+	userTips:{type:String},
 	createAt :{type:Date,default:Date.now()},
 	lastLoginAt :{type:Date,default:Date.now()},
+	phone:{type:String,unique:true}
 })
 userSchema.pre('save',function(next){
 	bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{

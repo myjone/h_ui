@@ -12,13 +12,23 @@
 
 				</div>
 				<div class="logo">
-
+						<Upload style='width:100%;height:100%;'></Upload>
 				</div>
 			</div>
 			<div class="box">
 				<div class="form_group">
 					<div class="input_item">
-						<input type="text" placeholder="手机号/用户名/邮箱" class="input"  v-model='user.userName'/>
+						<input type="text" placeholder="手机号" class="input"  v-model='user.phone'/>
+					</div>
+				</div>
+				<div class="form_group">
+					<div class="input_item">
+						<input type="text" placeholder="昵称" class="input"  v-model='user.userName' :maxlength="8"/>
+					</div>
+				</div>
+				<div class="form_group">
+					<div class="input_item">
+						<input type="text" placeholder="一句话描述你自己" class="input"  v-model='user.userTips' :maxlength="18"/>
 					</div>
 				</div>
 				<div class="form_group">
@@ -41,20 +51,29 @@
 		<!-- https://www.iconfont.cn/collections/detail?spm=a313x.7781069.1998910419.d9df05512&cid=15623-->
 	</section>
 </template>
-
 <script>
-	
-	import { axiosData } from '@/api/api'
+	import { axiosData } from '@/api/api';
+	import Upload from'@/components/upload/upload.vue';
+	import {mapGetters,mapActions} from 'vuex'
 	export default {
+		components:{
+			Upload,
+		},
 		data() {
 			return {
                user:{
                	userName:"",
                	passWord:"",
+               	phone:'',
+               	userTips:'',
                }
 			}
 		},
+		computed:{
+			...mapGetters(['src']),
+		},
 		methods: {
+			...mapActions(['img']),
 				goBack(){
 					this.$router.go(-1);
 				},
@@ -63,14 +82,22 @@
 					let url = '/api/user/register';
 					let param  = {};
 					param = Object.assign({},param,this.user);
+					param.userImage = this.src;
 					let _callback =(res)=>{
-						console.log(res)
+						 this.$toast('注册成功');
+						 let _this = this;
+						 setTimeout(function(){
+						 	_this.$router.push({
+						 		name:'login'
+						 	})
+						 },800)
 					}
 					axiosData('post',url,param,_callback,this)
 				}
 		},
-		mounted() {
-
+		mounted(){
+			//页面加载的时候删除vuex里面的数据
+			this.img('')
 		}
 	}
 </script>
@@ -103,6 +130,7 @@
 				transform: translateX(-50%);
 				top: 1.2rem;
 				border-radius: 1.5rem;
+				overflow:hidden;
 			}
 		}
 		.water {

@@ -18,7 +18,7 @@
 			<div class="box">
 				<div class="form_group">
 					<div class="input_item">
-						<input type="text" placeholder="手机号/用户名/邮箱" class="input"  v-model='user.userName'/>
+						<input type="text" placeholder="手机号" class="input"  v-model='user.phone'/>
 					</div>
 				</div>
 				<div class="form_group">
@@ -51,7 +51,7 @@
 		data() {
 			return {
                user:{
-               	userName:"",
+               	phone:"",
                	passWord:"",
                }
 			}
