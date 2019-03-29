@@ -7,12 +7,12 @@ let ObjectId = Schema.Types.ObjectId  //定义主键
 const userSchema =  new Schema({
 	UserId :ObjectId,
 	userName :{unique:true,type:String},
+	phone:{unique:true,type:String,dropDups: true},
 	passWord :String,
 	userImage:{type:String},
 	userTips:{type:String},
 	createAt :{type:Date,default:Date.now()},
 	lastLoginAt :{type:Date,default:Date.now()},
-	phone:{type:String,unique:true}
 })
 userSchema.pre('save',function(next){
 	bcrypt.genSalt(SALT_WORK_FACTOR,(err,salt)=>{

@@ -1,5 +1,5 @@
 <template>
-	<section>
+	<section style="height:100%;">
 		<div class="full_wrap">
 			<div class="zr">
 				<div class="water">
@@ -16,20 +16,18 @@
 				</div>
 			</div>
 			<div class="box">
-				<div class="form_group">
-					<div class="input_item">
-						<input type="text" placeholder="手机号" class="input"  v-model='user.phone'/>
-					</div>
+				<div class="input-fil-x" >
+					<input type="text" class="input-fill" placeholder='手机号' v-model='user.phone' />
+				    <label class="input-label">手机号</label>
+				    <div class="hr"></div>
 				</div>
-				<div class="form_group">
-					<div class="input_item">
-						<input type="password" placeholder="密码" class="input"  v-model='user.passWord'/>
-					</div>
+				<div class="input-fil-x" >
+					<input type="password" class="input-fill" placeholder='密码' v-model='user.passWord' />
+				    <label class="input-label">密码</label>
+				    <div class="hr"></div>
 				</div>
-				<div class="form_group">
-					<div class="input_item">
+				<div class="input-fil-x">
 						<div class="button" @click="toHome">登 &nbsp;录</div>
-					</div>
 				</div>
 				<div class="bar">
 					<router-link :to="{name:'register'}">注册</router-link>
@@ -85,28 +83,31 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped="scoped">
+ html,body{
+	background:#FFFFFF;
+}
 	.full_wrap {
 		width: 100vw;
-		height: 100vh;
+		height:100%;
 		background: #FFFFFF;
 		.zr {
 			background: $Maincolor;
 			width: 100%;
-			height: 4rem;
+			height:400px;
 			position: relative;
 			.return_back {
 				position: absolute;
-				width: 0.5rem;
-				height: 0.5rem;
-				top: 0.5rem;
-				left: 0.2rem;
+				width:50px;
+				height:50px;
+				top:50px;
+				left:20px;
 				background: url(../../assets/img/common/back.png) center center no-repeat;
-				background-size: 0.4rem;
+				background-size:40px;
 			}
 			.logo {
 				position: absolute;
-				width: 1.4rem;
-				height: 1.4rem;
+				width:140px;
+				height:140px;
 				background-image:url(../../assets/img/common/login.png);
 				background-position:center center;
 				background-repeat:no-repeat;
@@ -114,8 +115,8 @@
 				background-color:rgba(0,0,0,0.3);
 				left: 50%;
 				transform: translateX(-50%);
-				top: 1.2rem;
-				border-radius: 1.5rem;
+				top:120px;
+				border-radius:150px;
 			}
 		}
 		.water {
@@ -169,11 +170,11 @@
 		}
 		.box {
 			width: 100%;
-			margin-top: 1.3rem;
-			padding:0 0.5rem;
+			margin-top: 130px;
+			padding:0 50px;
 			.form_group {
 				width: 100%;
-				margin-bottom:0.5rem;
+				margin-bottom:50px;
 				.input_item {
 					width: 100%;
 					font-size: 0;
@@ -184,40 +185,100 @@
 						border-bottom: 1px solid #e2e2e2;
 						font-size: $Textcolor;
 						outline: none;
-						font-size: 0.26rem;
-						line-height: 0.6rem;
+						font-size:26px;
+						line-height:60px;
 						display:flex;
 						align-items:center;  
 						&:focus {
 							border-bottom: 1px solid $Maincolor;
 						}
 					}
-					.button {
+					
+				}
+			}
+			
+		}
+		.box{
+			width:100%;
+			padding:0 30px;
+			box-sizing:border-box;
+			margin-top:100px;
+			.input-fill{
+				width:100%;
+				height:80px;
+				font-size:30px;
+				border:0;
+				border-bottom:1px solid #EEEEEE;
+				padding:0 30px;
+				transition: .5s linear left;
+				position:relative;
+			}
+			
+			/*清除浏览器默认的placeholder 样式*/
+			.input-fill:placeholder-shown::placeholder {
+    			color: transparent;
+			}
+			.input-fil-x{
+				width:100%;
+				height:80px;
+				position:relative;
+				font-size:0;
+				 margin-bottom:60px;
+				.hr{
+					width:0;
+					position:absolute;
+					left:50%;
+					bottom:0;
+					height:2px;
+					background:#0081ff;
+					transition:0.5s ease-in-out;
+				}
+				.button {
 						width: 100%;
-						height: 0.7rem;
+						height:70px;
 						display: flex;
 						color: #FFFFFF;
 						border-radius: 5px;
 						align-items: center;
 						justify-content: center;
-						font-size: 0.26rem;
+						font-size:26px;
 						background: linear-gradient(to right, $Subcolor 10%, $Maincolor 100%);
-						margin-top:0.8rem;
+						margin-top:80px;
 						box-shadow:1px 5px 10px rgba(0,0,0,0.08);
 						transition:0.35s all ease-in; 
 						&:hover{
 							background: linear-gradient(to right, $Maincolor 10%, $Subcolor 100%);
 						}
 					}
-				}
+			}
+			.input-label{
+				position:absolute;
+				left:30px;
+				top:50%;
+				transform:translateY(-50%);
+				font-size:30px;
+				color:#eee;
+				pointer-events: none; /*让元素虚幻*/
+				transition:0.35s ease-in;
+			}
+			.input-fill:not(:placeholder-shown)~.input-label,
+			.input-fill:focus~.input-label {
+				transform: scale(0.8) translate(-30px,-80px);
+				color:#0081ff;
+			}
+			.input-fill:not(:placeholder-shown)~.hr,
+			.input-fill:focus~.hr{
+				width:100%;
+				left:0;
 			}
 			.bar{
 				width:100%;
-				height:0.5rem;
+				height:50px;
 				display:flex;
 				justify-content:space-between;
-				font-size:0.24rem;
+				font-size:24px;
 				align-items:center;
+				margin-top:-50px;
 				a:nth-child(1){
 					color:$Disabledcolor;
 				}
@@ -225,6 +286,8 @@
 					color:$Maincolor;
 				}
 			}
+			
 		}
+		
 	}
 </style>

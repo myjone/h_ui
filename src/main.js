@@ -8,6 +8,7 @@ import vMessage from './components/GlobalUserComponents/message/index';
 import Vant from 'vant';
 import 'vant/lib/index.css';
 import { Lazyload } from 'vant';
+import 'lib-flexible'
 
 Vue.use(Vant);
 Vue.use(Lazyload);

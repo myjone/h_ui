@@ -10,7 +10,6 @@ router.post('/',async(ctx)=>{
 router.post('/register',async(ctx)=>{
 	 const User = mongoose.model('Users');
 	 let newUser = new User(ctx.request.body);
-	 console.log(newUser)
 	 await newUser.save().then(()=>{
 	 	ctx.body = {
 	 		code:200,

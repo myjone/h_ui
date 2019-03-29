@@ -104,6 +104,8 @@ router.post('/fingByUser', async(ctx) => {
 })
 
 router.post('/token', (ctx) => {
+	console.log(qnconfig.uploadToken)
+	console.log(111)
       ctx.body = {
       	 code:200,
       	 message:'请求成功',

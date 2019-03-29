@@ -61,7 +61,7 @@
 <style lang="scss" scoped="scoped" rel="stylesheet/scss">
 	.footerNative {
 		width: 100%;
-		height: 1.2rem;
+		height:120px;
 		position: fixed;
 		left: 0;
 		bottom: 0;
@@ -69,20 +69,20 @@
 		box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 		display: flex;
 		justify-content: space-around;
-		padding: 0.1rem 0;
+		padding: 10px 0;
 		div {
 			width: 25%;
 			color: $rgbColor;
 			.span {
-				font-size: 0.28rem;
+				font-size: 28px;
 				text-align: center;
 			}
 			.icon {
 				width: 100%;
-				height: 0.6rem;
+				height: 60px;
 				background-position: center center;
 				background-repeat: no-repeat;
-				background-size: 0.5rem;
+				background-size:50px;
 			}
 			&:nth-child(1) .icon {
 				background-image: url(../../assets/img/footer/home.png);
