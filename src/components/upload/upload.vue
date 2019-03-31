@@ -102,8 +102,6 @@
 			}
 		},
 		mounted() {
-			this.getToken();
-
 			//组件重新加载的时候清楚vuex里面的数据
 			this.img('');
 		}

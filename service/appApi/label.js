@@ -22,7 +22,6 @@ router.post('/insertLabel', async(ctx) => {
 		}
 	})
 })
-
 router.post('/list',async(ctx)=>{
 	const Lables = mongoose.model('Labels');
 	let total = '';
@@ -32,7 +31,6 @@ router.post('/list',async(ctx)=>{
 			localField: "_id",
        	    foreignField: "labelId",
             as: "articleList"}}]).exec();
-		
 		ctx.body = {
 			code:200,
 			message:'请求成功',
@@ -45,7 +43,6 @@ router.post('/list',async(ctx)=>{
 		}
 	}
 })
-
 router.post('/labelList',async(ctx)=>{
 	const Lables = mongoose.model('Labels');
 	try {

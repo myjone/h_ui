@@ -33,7 +33,7 @@
 <style lang="scss" scoped="scoped" rel="stylesheet/scss">
      .headerNative {
 	 		width:100%;
-	 		height:1.2rem;
+	 		height:120px;
 	 		position:fixed;
 	 		background:$Maincolor;
 	 		left:0;
@@ -41,29 +41,29 @@
 	 		z-index:99;
 	 		.logo{
 	 			float: left;
-	 			width:1.2rem;
-	 			height:1.2rem;
+	 			width:120px;
+	 			height:120px;
 	 			background:url(../../assets/img/common/login.png) center center no-repeat;
-	 			background-size:0.8rem;
+	 			background-size:80px;
 	 		}
 	 		.menu_wap{
 	 			float:right;
-	 			width:2rem;
-	 			height:0.6rem;
-	 			border-radius:0.3rem;
+	 			width:200px;
+	 			height:60px;
+	 			border-radius:30px;
 	 			background-color:rgba(0,0,0,0.3);
 	 			background-image: url(../../assets/img/common/write.png);
-	 			background-size:0.5rem;
-	 			background-position:1.25rem center;
+	 			background-size:50px;
+	 			background-position:125px center;
 	 			background-repeat:no-repeat;
-	 			margin-right:.3rem;
-	 			margin-top:.3rem;
+	 			margin-right:30px;
+	 			margin-top:30px;
 	 			border:1px solid rgba(235,235,235,.5);
 	 			color:#fff;
-	 			font-size:0.24rem;
-	 			line-height:0.58rem;
+	 			font-size:24px;
+	 			line-height:58px;
 	 			text-align:center;
-	 			padding-right:0.3rem;
+	 			padding-right:30px;
 	 		}
 	 	}
 </style>

@@ -1,28 +1,29 @@
 <template>
 	<section>
 		<div class="edit_wrap">
-			<div class="edit_title">
+			<!--<div class="edit_title">
 				<div class="back_icon" @click="back">
 				</div>
 				{{msg}}
 			</div>
 			<div class="content_title">
-				<textarea style="outline:none;" placeholder="请输入您的标题" :maxlength="40" v-model='articleModel.articleTitle'></textarea>
+				<input type="text"  class="title_input"/>
 			</div>
 			<div class="article_img">
 				<Upload></Upload>
 			</div>
 			<div class="edit_content">
-				<textarea name="" id="" cols="" rows="" style="vertical-align:top;outline:none;" placeholder="请输入您的内容" v-model='articleModel.articleContent'></textarea>
-			</div>
-			<div class="submit">
+				
+			</div>-->
+			<!--<div class="submit">
 				<div class="cancel" @click="cancel">
 					取消
 				</div>
 				<div class="submit_btn" @click="submit">
 					提交
 				</div>
-			</div>
+			</div>-->
+			<Editor @on-change="handleChange"></Editor>
 		</div>
 	</section>
 </template>
@@ -30,10 +31,13 @@
 	import { axiosData } from '@/api/api';
 	import { mapGetters } from 'vuex';
 	import Upload from'@/components/upload/upload.vue';
+	import Editor from '@/components/editor';
+	
 	export default {
 		name: 'Home',
 		components:{
 			Upload,
+			Editor
 		},
 		data() {
 			return {
@@ -48,6 +52,9 @@
 			...mapGetters(['userId','src']),
 		},
 		methods: {
+			handleChange(html, text) {
+				console.log(html)
+			},
 			back() {
 				this.$router.go(-1)
 			},
@@ -98,7 +105,6 @@
 		height: 100vh;
 		background: #FFFFFF;
 		position: relative;
-		padding-top: 1rem;
 		box-sizing: border-box;
 		.edit_title {
 			position: fixed;
@@ -134,18 +140,29 @@
 		.content_title {
 			width: 100%;
 			overflow: hidden;
-			textarea {
+			.title_input{
 				width: 100%;
 				border: none;
 				font-size: 0.36rem;
 				font-weight: 600;
 				text-align: left;
-				line-height: 0.5rem;
+				line-height: 1rem;
 				border-bottom: 1px solid #e2e2e2;
 				padding: 0.1rem 0.2rem;
 				box-sizing: border-box;
 				display: flex;
 				align-items: center;
+				height:1rem;
+			}
+			.amation_p{
+				width:100%;
+				height:100%;
+				position:absolute;
+				left:0;
+				top:0;
+				line-height:1rem;
+				padding:0 0.3rem;
+			
 			}
 		}
 		.edit_content {
@@ -153,7 +170,6 @@
 			height:50vh;
 			overflow-x: hidden;
 			overflow-y: scroll;
-			background: blue;
 			textarea {
 				width: 100%;
 				border: none;

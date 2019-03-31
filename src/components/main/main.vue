@@ -36,8 +36,8 @@
 <style lang="scss" rel='stylesheet/scss'>
 	.main_APP {
 		width: 100%;
-		padding-top: 1.2rem;
-		padding-bottom:1.2rem;
+		padding-top:120px;
+		padding-bottom:120px;
 	}
 	.transitionRouter-enter-active,
 	.transitionRouter-leave-active {

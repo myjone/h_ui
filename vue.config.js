@@ -66,7 +66,15 @@ css: {
     loaderOptions: {
       sass: {
         data:  '@import "@/css/default.scss";'
-      }
+      },
+      css:{},
+      postcss:{
+              plugins: [
+               require('postcss-px2rem')({
+                 remUnit: 75
+               })
+             ]
+          }
     }
 }
 }

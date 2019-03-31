@@ -1,59 +1,24 @@
 <template>
 	<section>
-		<ul class="block_list">
-			<li>
-				#E54D42
-			</li>
-			<li>
-				#F37A1D
-			</li>
-			<li>
-			    #FBBD08
-			</li>
-			<li>
-				#8DC73F
-			</li>
-			<li>
-				#3AB54A
-			</li>
-			<li>
-				#3AB54A
-			</li>
-			<li>
-				#1CBCB4
-			</li>
-			<li>
-				#0081FF
-			</li>
-			<li>
-				#6739B6
-			</li>
-			
-			<li>
-				
-			</li>
-			<li>
-				
-			</li>
-			<li>
-			
-			</li>
-			<li>
-				
-			</li>
-		</ul>
+		<Editor ref="editor"  @on-change="handleChange" />
 	</section>
 </template>
 <script>
+	import Editor from '@/components/editor'
 	export default {
 		name: 'Home',
+		components: {
+			Editor
+		},
 		data() {
 			return {
 
 			}
 		},
 		methods: {
-
+			handleChange(html, text) {
+				console.log(html)
+			},
 		},
 		mounted() {
 

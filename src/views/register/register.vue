@@ -110,26 +110,26 @@
 		.zr {
 			background: $Maincolor;
 			width: 100%;
-			height: 4rem;
+			height: 400px;
 			position: relative;
 			.return_back {
 				position: absolute;
-				width: 0.5rem;
-				height: 0.5rem;
-				top: 0.5rem;
-				left: 0.2rem;
+				width:50px;
+				height:50px;
+				top:50px;
+				left:20px;
 				background: url(../../assets/img/common/back.png) center center no-repeat;
-				background-size: 0.4rem;
+				background-size:40px;
 			}
 			.logo {
 				position: absolute;
-				width: 1.4rem;
-				height: 1.4rem;
+				width:140px;
+				height:140px;
 				background-color: #FFFFFF;
 				left: 50%;
 				transform: translateX(-50%);
-				top: 1.2rem;
-				border-radius: 1.5rem;
+				top:120px;
+				border-radius:150px;
 				overflow:hidden;
 			}
 		}
@@ -184,11 +184,11 @@
 		}
 		.box {
 			width: 100%;
-			margin-top: 1.3rem;
-			padding:0 0.5rem;
+			margin-top:130px;
+			padding:0 50px;
 			.form_group {
 				width: 100%;
-				margin-bottom:0.5rem;
+				margin-bottom:50px;
 				.input_item {
 					width: 100%;
 					font-size: 0;
@@ -199,8 +199,8 @@
 						border-bottom: 1px solid #e2e2e2;
 						font-size: $Textcolor;
 						outline: none;
-						font-size: 0.26rem;
-						line-height: 0.6rem;
+						font-size:26px;
+						line-height:60px;
 						display:flex;
 						align-items:center;  
 						&:focus {
@@ -209,15 +209,15 @@
 					}
 					.button {
 						width: 100%;
-						height: 0.7rem;
+						height:70px;
 						display: flex;
 						color: #FFFFFF;
 						border-radius: 5px;
 						align-items: center;
 						justify-content: center;
-						font-size: 0.26rem;
+						font-size:26px;
 						background: linear-gradient(to right, $Subcolor 10%, $Maincolor 100%);
-						margin-top:0.8rem;
+						margin-top:80px;
 						box-shadow:1px 5px 10px rgba(0,0,0,0.08);
 						transition:0.35s all ease-in; 
 						&:hover{
@@ -228,10 +228,10 @@
 			}
 			.bar{
 				width:100%;
-				height:0.5rem;
+				height:50px;
 				display:flex;
 				justify-content:space-between;
-				font-size:0.24rem;
+				font-size:24px;
 				align-items:center;
 				a:nth-child(1){
 					color:$Maincolor;
