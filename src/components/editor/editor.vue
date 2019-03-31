@@ -6,7 +6,7 @@
 
 <script>
 	import Editor from 'wangeditor'
-	import 'wangeditor/release/wangEditor.min.css'
+	//import 'wangeditor/release/wangEditor.min.css'
 	import { oneOf } from '@/libs/tools'
 	export default {
 		name: 'Editor',
@@ -143,6 +143,6 @@
 	}
 </script>
 
-<style lang="scss" rel='stylesheet/scss' scoped="scoped">
+<style>
 	@import url("./wangEditor.css");
 </style>

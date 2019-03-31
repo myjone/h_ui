@@ -7601,7 +7601,7 @@ postcss-ordered-values@^4.1.2:
 
 postcss-px2rem@^0.3.0:
   version "0.3.0"
-  resolved "http://registry.npm.taobao.org/postcss-px2rem/download/postcss-px2rem-0.3.0.tgz#0dfa4e8a268fa7478273f0c4b47c619834894041"
+  resolved "https://registry.yarnpkg.com/postcss-px2rem/-/postcss-px2rem-0.3.0.tgz#0dfa4e8a268fa7478273f0c4b47c619834894041"
   integrity sha1-DfpOiiaPp0eCc/DEtHxhmDSJQEE=
   dependencies:
     postcss "^5.0.0"
