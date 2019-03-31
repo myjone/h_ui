@@ -82,6 +82,7 @@
 		min-height: 100vh;
 		background: #FFFFFF;
 		padding-top: 1.1rem;
+		webkit-overflow-scrolling: touch;
 		.title {
 			width: 100%;
 			height: 1rem;
