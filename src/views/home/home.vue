@@ -1,14 +1,19 @@
 <template>
 	<section>
-		<Editor ref="editor"  @on-change="handleChange" />
+		<ul class="list">
+			<li>
+				<router-link :to='{name:"directive"}'>
+			  自定义指令
+			  </router-link>
+			</li>
+		</ul>
 	</section>
 </template>
 <script>
-	import Editor from '@/components/editor'
 	export default {
-		name: 'Home',
+		name: 'Directive',
 		components: {
-			Editor
+			//Editor
 		},
 		data() {
 			return {
@@ -16,9 +21,7 @@
 			}
 		},
 		methods: {
-			handleChange(html, text) {
-				console.log(html)
-			},
+			
 		},
 		mounted() {
 
@@ -26,22 +29,18 @@
 	}
 </script>
 <style lang="scss" rel='stylesheet/scss' scoped="scoped">
-	.block_list{
-		width:100%;
-		display:flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		padding:0.2rem;
+	.list{
+		width:690px;
+		margin:0 auto;
 		li{
-			width:2rem;
-			height:2rem;
-			background:blue;
-			box-sizing:border-box;
-			border-radius:2px;
-			text-align:center;
-			margin-bottom:0.3rem;
-			color:#FFFFFF;
-			font-size:0.26rem;
+			width:100%;
+			height:80px;
+			line-height:80px;
+			font-size:28px;
+			border-bottom:1px solid #e2e2e2;
+			text-align: left;
+			cursor:pointer;
+			
 		}
 	}
 </style>

@@ -38,7 +38,15 @@ export default [{
 				},
 			component: () =>
 				import('@/views/user/user.vue')
-		}]
+		},{
+			path: '/directive',
+			name: 'directive',
+			meta: {
+				title: '指令'
+				},
+			component: () =>
+				import('@/views/other/directive.vue')
+		},]
 	},
 	{
 		path: 'recommend',
