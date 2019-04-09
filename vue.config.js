@@ -42,6 +42,8 @@ module.exports = {
 			// 匹配代理的url
 			'/api': {
 					target:'http://localhost:3000/',
+					//target:	'	https://zhuanlan.zhihu.com'
+					//https://zhuanlan.zhihu.com/api/recommendations/columns?limit=6&offset=6&seed=7
 				// 路径重写
 				pathRewrite: {
 					'^/api': '/'
