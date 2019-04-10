@@ -12,7 +12,7 @@
 							{{item.userId.userName}}
 						</div>
 						<div class="sign">
-							web前端
+							{{item.labelId.labelName}}
 						</div>
 					</div>
 					<div class="article_title">
@@ -20,12 +20,12 @@
 					</div>
 					<div class="article_box" v-show='!item.articleImg'>
 						<div class="article_info">
-							{{item.articleContent}}
+							{{item.articleInfo}}
 						</div>
 					</div>
 					<div class="article_box article_box_wrap" v-show='item.articleImg'>
 						<div class="article_info">
-							{{item.articleContent}}
+							{{item.articleInfo}}
 						</div>
 						<div class="article_img"  v-lazy:background-image="item.articleImg">
 

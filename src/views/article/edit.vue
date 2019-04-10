@@ -51,6 +51,7 @@
 					articleTitle: '',
 					articleContent: '',
 					labelId:'',
+					articleInfo:'',
 				},
 				isFabu:false,
 				labelList:[],
@@ -108,6 +109,7 @@
 			//监听富文本的内容
 			handleChange(html, text) {
 			  this.articleModel.articleContent = html;
+			  this.articleModel.articleInfo = text.substring(0,200)
 			},
 		},
 		mounted() {

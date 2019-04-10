@@ -13,7 +13,7 @@
 			<div class="article_title">
 				{{articleDetail.articleTitle}}
 			</div>
-			<div class="iamge">
+			<div class="iamge" v-show='articleDetail.articleImg'>
 				<img :src="articleDetail.articleImg" alt="" width="100%" />
 			</div>
 			<div class="content" v-html="articleDetail.articleContent">
@@ -81,26 +81,26 @@
 		width: 100%;
 		min-height: 100vh;
 		background: #FFFFFF;
-		padding-top: 1.1rem;
+		padding-top:110px;
 		webkit-overflow-scrolling: touch;
 		.title {
 			width: 100%;
-			height: 1rem;
+			height: 100px;
 			position: fixed;
 			left: 0;
 			top: 0;
 			width: 100%;
-			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+			box-shadow: 0 1PX 5PX rgba(0, 0, 0, 0.1);
 			overflow: hidden;
 			background: linear-gradient(to right, $Maincolor 10%, $Subcolor 100%);
 			z-index: 1;
 			.back_icon {
 				position: absolute;
-				width: 0.5rem;
-				height: 0.5rem;
+				width: 50px;
+				height:50px;
 				background: url(../../assets/img/common/back.png) center center no-repeat;
-				background-size: 0.4rem;
-				top: 0.25rem;
+				background-size:40px;
+				top: 25px;
 				z-index: 2;
 			}
 			.title_container {
@@ -110,46 +110,66 @@
 				width: 100%;
 				transition: 0.5s ease-in;
 				.page_title {
-					line-height: 1rem;
+					line-height: 100px;
 					width: 100%;
-					height: 1rem;
-					font-size: 0.3rem;
+					height:100px;
+					font-size:30px;
 					font-weight: 600;
 					text-align: center;
 					color: #FFFFFF;
 				}
 			}
 			.title_active {
-				top: -1rem;
+				top: -100px;
 				transition: 0.5s ease-in;
 			}
 		}
 		.article_title {
-			width: 6.9rem;
-			margin: 0.2rem auto;
-			font-size: 0.38rem;
+			width:690px;
+			margin:20px auto;
+			font-size:38px;
 			font-weight: 700;
-			line-height: 0.6rem;
+			line-height:60px;
 			text-align: left;
 		}
 		.iamge {
-			width: 6.9rem;
+			width:690px;
 			margin: 0 auto;
-			margin-top: 0.1rem;
-			border-radius: 5px;
-			box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.09);
+			margin-top:10px;
+			border-radius: 5PX;
+			box-shadow: 1PX 3PX 5PX rgba(0, 0, 0, 0.09);
 			overflow: hidden;
 			font-size: 0;
 			opacity: 0.8;
 		}
-		.content {
-			width: 6.9rem;
+		.content{
+			width:690px;
 			margin: 0 auto;
-			font-size: 0.3rem;
-			line-height: 0.6rem;
+			font-size:30px;
+			line-height:60px;
 			text-align: left;
 			color: $Textcolor;
-			margin-top: 0.3rem;
+			margin-top:30px;
+			overflow-x:hidden;
+			.figure{
+				width:100%;
+				overflow-x:auto;
+			}
 		}
+		img{
+			display:block;
+			max-width:100%;
+		}
+	}
+</style>
+<style>
+	figure{
+		width:100%;
+		overflow-x:auto;
+	}
+	img{
+		max-width:100%;
+		margin: 0 auto;
+		display:block;
 	}
 </style>

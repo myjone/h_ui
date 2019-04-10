@@ -5,9 +5,10 @@ const articleSchema = new Schema({
 	articleId:{type: mongoose.Schema.Types.ObjectId},
 	articleTitle:String,
 	articleContent:String,
+	articleInfo:String,
 	articleImg:{type:String},
-	addTime :{type:Date,default:Date.now()},
-	updateTime :{type:Date,default:Date.now()},
+	addTime :{type:Number,default:(new Date()).getTime()},
+	updateTime :{type:Number,default:(new Date()).getTime()},
 	userId: {
        type: Schema.Types.ObjectId,
        ref: 'Users'
@@ -19,6 +20,4 @@ const articleSchema = new Schema({
 },{
 	collections:'Articles'
 })
-
-
 mongoose.model('Articles',articleSchema)
