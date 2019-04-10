@@ -1,29 +1,35 @@
 <template>
 	<section>
 		<div class="edit_wrap">
-			<!--<div class="edit_title">
-				<div class="back_icon" @click="back">
-				</div>
-				{{msg}}
+			<div class="absolute_wrap">
+				<div class="btn" @click="isFabu=!isFabu">发布</div>
 			</div>
-			<div class="content_title">
-				<input type="text"  class="title_input"/>
+			<Editor @on-change="handleChange" ></Editor>
+		</div>
+		<div class="fixed" v-show="isFabu">
+			<div class="contain">
+					<div class="title">
+						发布文章
+					</div>
+					<input type="text" placeholder="请输入文章标题"  class="title_input" v-model='articleModel.articleTitle'/>
+					<div class="img">
+						<Upload></Upload>
+					</div>
+					<div class="label_wrap">
+						<div class="label_title">
+						   选择标签
+						</div>
+						<div class="label_group">
+							<div :class="['label',{active:index===labelIndex}]" v-for="(item,index) in labelList" @click="changeLabel(item,index)">
+								{{item.labelName}}
+							</div>
+						</div>
+					</div>
+					<div class="btn_group">
+						<div @click="isFabu = !isFabu">取消</div>
+						<div @click="submit">提交</div>
+					</div>
 			</div>
-			<div class="article_img">
-				<Upload></Upload>
-			</div>
-			<div class="edit_content">
-				
-			</div>-->
-			<!--<div class="submit">
-				<div class="cancel" @click="cancel">
-					取消
-				</div>
-				<div class="submit_btn" @click="submit">
-					提交
-				</div>
-			</div>-->
-			<Editor @on-change="handleChange"></Editor>
 		</div>
 	</section>
 </template>
@@ -32,20 +38,23 @@
 	import { mapGetters } from 'vuex';
 	import Upload from'@/components/upload/upload.vue';
 	import Editor from '@/components/editor';
-	
 	export default {
 		name: 'Home',
 		components:{
 			Upload,
 			Editor
 		},
-		data() {
-			return {
+		data(){
+			return{
 				msg: '文章书写',
 				articleModel: {
 					articleTitle: '',
 					articleContent: '',
-				}
+					labelId:'',
+				},
+				isFabu:false,
+				labelList:[],
+				labelIndex:null,
 			}
 		},
 		computed:{
@@ -58,12 +67,13 @@
 			back() {
 				this.$router.go(-1)
 			},
-			submit() {
+			submit(){
 				let url = '/api/article/insertArticle';
 				let param = {};
 				param = Object.assign({}, param, this.articleModel)
 				param.userId = this.userId;
 				param.articleImg = this.src;
+				console.log(param)
 				let _callback = (res) => {
 					if(res.messsage == 'success') {
 						this.$toast('文章已经保');
@@ -77,137 +87,176 @@
 								name: 'home'
 							})
 						}, 800)
-
 					}
+				}
+			    axiosData('post', url, param, _callback, this)
+			},
+			//获取所有标签
+			getLabelList(){
+				let url = '/api/label/labelList';
+				let param = {};
+				let _callback =(res)=>{
+					this.labelList = [...res];
 				}
 				axiosData('post', url, param, _callback, this)
 			},
-
-			//quxiao 
-			cancel() {
-				this.articleModel = {
-					articleTitle: '',
-					articleContent: '',
-				};
-				this.$router.push({
-					name: 'home'
-				})
-			}
+			//标签选择
+			changeLabel(item,index){
+				this.labelIndex = index;
+				this.articleModel.labelId = item._id;
+			},
+			//监听富文本的内容
+			handleChange(html, text) {
+			  this.articleModel.articleContent = html;
+			},
 		},
 		mounted() {
-			console.log(this.userId)
+			this.getLabelList();
 		}
 	}
 </script>
 <style lang="scss" rel='stylesheet/scss' scoped="scoped">
 	.edit_wrap {
 		width: 100%;
-		height: 100vh;
+		height:100vh;
 		background: #FFFFFF;
 		position: relative;
 		box-sizing: border-box;
-		.edit_title {
-			position: fixed;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 1rem;
-			box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-			line-height: 1rem;
-			font-size: 0.3rem;
-			font-weight: 600;
-			text-align: center;
-			color: $titleColor;
-			overflow: hidden;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			.back_icon {
-				position: absolute;
-				width: 0.5rem;
-				height: 0.5rem;
-				background: url(../../assets/img/common/next_default.png) center center no-repeat;
-				background-size: 0.4rem;
-				transform: rotate(180deg);
-				top: 0.25rem;
-			}
+		.absolute_wrap{
+			position:absolute;
+			width:100px;
+			height:50px;
+			top:9px;
+			right:10px;
+			color:#FFFFFF;
+			font-size:18px;
+			line-height:50px;
+			text-align:center;
+			font-weight:600;
+			border-radius:60px;
+			background:#1cbbb4;
 		}
-		.article_img{
-			width:100%;
-			height:3rem;
-			margin:0.1rem auto;
-			border-bottom:1px solid #E2E2E2;
-		}
-		.content_title {
-			width: 100%;
-			overflow: hidden;
-			.title_input{
-				width: 100%;
-				border: none;
-				font-size: 0.36rem;
-				font-weight: 600;
-				text-align: left;
-				line-height: 1rem;
-				border-bottom: 1px solid #e2e2e2;
-				padding: 0.1rem 0.2rem;
-				box-sizing: border-box;
-				display: flex;
-				align-items: center;
-				height:1rem;
-			}
-			.amation_p{
+	}
+	.fixed{
+		position:fixed;
+		width:100%;
+		height:100vh;
+		top:0;
+		right:0;
+		background:rgba(0,0,0,0.6);
+		z-index:98;
+		.contain{
+			width:90%;
+			margin:0 auto;
+			margin-top:200px;
+			background:#FFFFFF;
+			border-radius:8PX;
+			box-shadow:1px 3px 20px rgba(0,0,0,0.2);
+			overflow-x:hidden;
+			.title{
 				width:100%;
-				height:100%;
-				position:absolute;
-				left:0;
-				top:0;
-				line-height:1rem;
-				padding:0 0.3rem;
-			
+				height:80px;
+				text-align:center;
+				line-height:80px;
+				background:#0081ff;
+				font-size:18px;
+				font-weight:600;
+				color:#FFFFFF;
 			}
-		}
-		.edit_content {
-			width: 100%;
-			height:50vh;
-			overflow-x: hidden;
-			overflow-y: scroll;
-			textarea {
-				width: 100%;
-				border: none;
-				display: flex;
-				font-size: 0.28rem;
-				text-align: left;
-				line-height: 0.5rem;
-				padding: 0.1rem 0.2rem;
-				height: 70vh;
+			.title_input{
+				display:block;
+				width:98%;
+				height:80px;
+				margin:0 auto;
+				margin-top:20px;
+				border:1px solid #e2e2e2;
+				font-size:30px;
+				padding:0 10px;
+				box-sizing:border-box;
+				transition:0.35s;
+				&:focus{
+					border:1px solid #0081ff;
+				}
 			}
-		}
-		.submit {
-			position: absolute;
-			width: 100%;
-			height: 1rem;
-			bottom: 0;
-			left: 0;
-			box-shadow: 0 -3px 5px rgba(0, 0, 0, 0.06);
-			font-size: 0.32rem;
-			font-weight: 600;
-			overflow: hidden;
-			.cancel {
-				width: 50%;
-				float: left;
-				height: 1rem;
-				line-height: 1rem;
-				text-align: center;
-				color: $rgbColor;
+			.img{
+				width:98%;
+				height:4rem;
+				margin:20px auto;
+				border:1px solid #e2e2e2;
+				box-sizing:border-box;
 			}
-			.submit_btn {
-				width: 50%;
-				float: right;
-				background: #0081ff;
-				height: 1rem;
-				line-height: 1rem;
-				text-align: center;
-				color: #FFFFFF;
+			.label_wrap{
+				width:98%;
+				margin:20px auto;
+				box-sizing:border-box;
+				.label_title{
+					width:100%;
+					height:60px;
+					font-size:24px;
+					line-height:60px;
+					border-bottom:1px solid #0081ff;
+					color:#0081ff;
+					margin-bottom:20px;
+				}
+				.label_group{
+					width:100%;
+					display:flex;
+					justify-content:flex-start;
+					height:80px;
+					overflow-x:auto;
+					white-space: nowrap;
+					.label{
+						padding:0px 20px;
+						border:1Px solid #e2e2e2;
+						border-radius:3PX;
+						margin:10px;
+						font-size:26px;
+						color:#999999;
+						height:60px;
+						line-height:58px;
+						transition:0.3s;
+					}
+					.active{
+						border:1PX solid #0081ff;
+						color:#0081ff;
+						position:relative;
+						padding-right:58px;
+						&::after{
+							content:"";
+							position:absolute;
+							width:35px;
+							height:35px;
+							border-radius:100%;
+							background-color:#0081ff;
+							right:8px;
+							top:50%;
+							transform:translateY(-50%);
+							background-image:url(../../assets/img/common/yes.png);
+							background-position:center center;
+							background-repeat:no-repeat;
+							background-size:16PX;
+						}
+					}
+				}
 			}
+			.btn_group{
+					width:100%;
+					div{
+						width:50%;
+						height:60px;
+						line-height:60px;
+						float:left;
+						text-align:center;
+						font-size:14px;
+						color:#fff;
+						&:nth-child(1){
+							    background: linear-gradient(to right, #1cbbb4 10%, #0081ff 100%);
+						}
+						&:nth-child(2){
+							    background: linear-gradient(to right, #0081ff 100%, #1cbbb4 10%);
+						}
+					}
+				}
 		}
 	}
 </style>

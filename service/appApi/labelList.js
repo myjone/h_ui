@@ -26,11 +26,7 @@ router.post('/labellist', async(ctx) => {
 	let  labelList = mongoose.model('LabelLists');
      try{
      	
-     	let result = await labelList.find({}).populate('labelId').exec();
-     	
-     	console.log(result  +'-----------------')
-     	
-     	
+     	let result = await labelList.find({}).populate('labelId').exec();	
      }catch(error){
      	ctx.body = {
      		code:500,

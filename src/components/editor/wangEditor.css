@@ -23,6 +23,8 @@
 	border-bottom:1px solid #0081ff !important;
 	background:#0081ff !important;
 	justify-content:space-around;
+	padding-right:120px !important;
+	height:70px;
 }
 .w-e-toolbar .w-e-droplist {
   position: absolute;
@@ -190,7 +192,7 @@
 }
 .w-e-toolbar .w-e-menu i {
   color:rgb(245,245,245);
-  font-size:40px;
+  font-size:38px;
 }
 .w-e-toolbar .w-e-menu:hover i {
   color: #FFFFFF;
@@ -203,8 +205,13 @@
 }
 .w-e-text-container{
 	padding:15px 20px;
+	height:95vh !important;
 	border:none !important;
+	z-index:10 !important;
 }
+.w-e-text-container img{
+		max-width:100% !important;
+	}
 .w-e-text-container .w-e-panel-container {
   position: absolute;
   top: 0;
