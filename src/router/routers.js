@@ -27,7 +27,7 @@ export default [{
 			name: 'home',
 			meta: { 
 				title: '首页'
-				},
+			},
 			component: () =>
 				import('@/views/home/home.vue')
 		},{

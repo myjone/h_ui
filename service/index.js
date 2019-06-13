@@ -46,12 +46,10 @@ router.use('',upload.routes())
 	await connect();
 	initSchema();
 })()
-
 app.use(async(ctx)=>{
 	console.log(ctx)
 	ctx.body='<h1>Hello Koa2</h1>'
 })
-
 app.listen(3000,()=>{
 	console.log('[Serveer] starting at  port 3000')
 })
